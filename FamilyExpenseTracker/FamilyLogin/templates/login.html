@@ -1,0 +1,45 @@
+{% load static %}
+<!--<!DOCTYPE html>-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static '/css/login.css' %}" rel="stylesheet">
+</head>
+<body class="bd" align="center" style="">
+<h2 class="h2">Welcome to Login page</h2>
+<form method="post" action="loginuser">
+    {% csrf_token %}
+    {% if data == 'failed' %}
+        <div class="div1">
+            <h5 style="color:red"> please provide correct credentials</h5>
+        </div>
+    {% endif %}
+    <div style="margin-top:50px;">
+        <table align="center">
+            <tr>
+                <td>UserName</td>
+                <td>
+                    <input type="text" name="username">
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" name="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Login">
+                </td>
+                <td>
+                    <a href="{% url 'registerpage' %}" class="a">Register</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+</html>
